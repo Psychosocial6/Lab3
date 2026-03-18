@@ -8,13 +8,15 @@ def solve(function, a, b, eps):
         for i in range(n - 1):
             points.append(a + (i + 1) * h)
         points.append(b)
-        int_sum = 0
-        for i in range(n):
-            y1 = function.f(points[i])
-            y2 = function.f(points[i + 1])
-            int_sum += (y1 + y2) / 2 * h
+        int_sum = function.f(points[0]) + function.f(points[-1])
+        for i in range(1, len(points) - 1):
+            if i % 2 != 0:
+                int_sum += 4 * points[i]
+            else:
+                int_sum += 2 * points[i]
+        int_sum *= h / 3
         if len(sums) > 0:
-            delta = abs(int_sum - sums[-1]) / 3
+            delta = abs(int_sum - sums[-1]) / 15
             if delta <= eps:
                 return int_sum, n
             else:

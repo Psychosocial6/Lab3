@@ -24,6 +24,10 @@ def solve(mode, function, a, b, eps):
             else:
                 delta = abs(int_sum - sums[-1]) / 3
             if delta <= eps:
-                return int_sum
+                return int_sum, n
             else:
+                sums.append(int_sum)
                 n *= 2
+        else:
+            sums.append(int_sum)
+            n *= 2
