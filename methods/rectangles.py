@@ -2,9 +2,8 @@ def solve(mode, function, a, b, eps):
     n = 4
     sums = []
     while True:
-        h = (b - a) / 4
-        points = []
-        points.append(a)
+        h = (b - a) / n
+        points = [a]
         for i in range(n - 1):
             points.append(a + h * (i + 1))
         points.append(b)

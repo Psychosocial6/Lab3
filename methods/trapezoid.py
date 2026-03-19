@@ -3,8 +3,7 @@ def solve(function, a, b, eps):
     sums = []
     while True:
         h = (b - a) / n
-        points = []
-        points.append(a)
+        points = [a]
         for i in range(n - 1):
             points.append(a + (i + 1) * h)
         points.append(b)
